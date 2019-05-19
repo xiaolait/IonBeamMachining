@@ -10,14 +10,17 @@ namespace IonBeamMachining.ViewModel
 {
     public class FileViewModel : ItemViewModelBase
     {
-        public string Extension { get; set; }
-
-        public override void Add()
+        public FileViewModel(string path, ItemViewModelBase parent) : base(path, parent)
         {
-            throw new NotImplementedException();
         }
 
-        public override void Remove()
+        public string Extension { get; set; }
+
+        public override void ImportItem()
+        {
+        }
+
+        public override void DeleteItem()
         {
             Parent.Children.Remove(this);
             File.Delete(GetPath());

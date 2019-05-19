@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using IonBeamMachining.Service;
 using Microsoft.Practices.ServiceLocation;
 
 namespace IonBeamMachining.ViewModel

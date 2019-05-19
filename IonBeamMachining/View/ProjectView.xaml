@@ -37,7 +37,7 @@
                 <TextBlock Grid.Column="1" Text="{Binding Name}"/>
                 <telerik:RadContextMenu.ContextMenu>
                     <telerik:RadContextMenu Opened="RadContextMenu_Opened">
-                        <telerik:RadMenuItem Header="新建文件" Command="{Binding DeleteItem}"/>
+                        <telerik:RadMenuItem Header="导入文件" Command="{Binding Import}"/>
                         <telerik:RadMenuItem Header="删除工程" Command="{Binding Delete}"/>
                         <telerik:RadMenuItem Header="重命名" Click="Rename_Click"/>
                     </telerik:RadContextMenu>

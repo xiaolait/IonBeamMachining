@@ -14,7 +14,13 @@ namespace IonBeamMachining.Common
 
         public ItemViewModelBase Parent { get; set; }
         public ObservableCollection<ItemViewModelBase> Children { get; set; } = new ObservableCollection<ItemViewModelBase>();
-       
+
+        public ItemViewModelBase(string path, ItemViewModelBase parent)
+        {
+            _path = path;
+            Parent = parent;
+        }
+
         private string _path;
         public string Name {
             get { return _path; }
@@ -37,22 +43,22 @@ namespace IonBeamMachining.Common
             {
                 return _delete
                     ?? (_delete = new RelayCommand(
-                    () => Remove()));
+                    () => DeleteItem()));
             }
         }
-        public abstract void Remove();
+        public abstract void DeleteItem();
 
-        private RelayCommand _new;
-        public RelayCommand New
+        private RelayCommand _import;
+        public RelayCommand Import
         {
             get
             {
-                return _new
-                    ?? (_new = new RelayCommand(
-                    () => Add()));
+                return _import
+                    ?? (_import = new RelayCommand(
+                    () => ImportItem()));
             }
         }
-        public abstract void Add();
+        public abstract void ImportItem();
 
         public string GetPath()
         {

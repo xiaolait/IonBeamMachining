@@ -11,7 +11,7 @@ namespace IonBeamMachining.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        public ItemModelBase SelectedItem;
+        public ItemViewModelBase SelectedItem;
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>

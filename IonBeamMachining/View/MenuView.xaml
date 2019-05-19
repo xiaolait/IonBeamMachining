@@ -10,7 +10,10 @@
              DataContext="{Binding Menu, Source={StaticResource Locator}}">
     <Grid>
         <telerik:RadMenu>
-            <telerik:RadMenuItem Header="新建工程" Command="{Binding ProjectList.New, Source={StaticResource Locator}}"/>
+            <telerik:RadMenuItem Header="工程" >
+                <telerik:RadMenuItem Header="新建工程" Command="{Binding ProjectList.NewProject, Source={StaticResource Locator}}"/>
+                <telerik:RadMenuItem Header="导入工程" Command="{Binding ProjectList.Import, Source={StaticResource Locator}}"/>
+            </telerik:RadMenuItem>
             <telerik:RadMenuItem Header="设置" >
                 <telerik:RadMenuGroupItem>
                     <telerik:RadMenuItem Header="Options 1" />

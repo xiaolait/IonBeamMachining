@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IonBeamMachining.Model
 {
-    public class FileViewModel : ItemModelBase
+    public class FileViewModel
     {
         public string Extension { get; set; }
     }
