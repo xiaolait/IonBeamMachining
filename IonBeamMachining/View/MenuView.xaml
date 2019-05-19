@@ -1,0 +1,24 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IonBeamMachining.View"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="IonBeamMachining.View.MenuView"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="300"
+             DataContext="{Binding Menu, Source={StaticResource Locator}}">
+    <Grid>
+        <telerik:RadMenu>
+            <telerik:RadMenuItem Header="新建工程" Command="{Binding ProjectList.New, Source={StaticResource Locator}}"/>
+            <telerik:RadMenuItem Header="设置" >
+                <telerik:RadMenuGroupItem>
+                    <telerik:RadMenuItem Header="Options 1" />
+                    <telerik:RadMenuItem Header="Options 2" />
+                    <!-- More Menu Items -->
+                    <telerik:RadMenuItem Header="Options 30" />
+                </telerik:RadMenuGroupItem>
+            </telerik:RadMenuItem>
+        </telerik:RadMenu>
+    </Grid>
+</UserControl>

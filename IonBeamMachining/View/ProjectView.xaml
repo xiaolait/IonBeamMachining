@@ -1,0 +1,64 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:view="clr-namespace:IonBeamMachining.View"
+             xmlns:vm="clr-namespace:IonBeamMachining.ViewModel"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="IonBeamMachining.View.ProjectView"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding ProjectList, Source={StaticResource Locator}}">
+    <UserControl.Resources>
+        <HierarchicalDataTemplate x:Key="FileTemplate" DataType="{x:Type vm:FileViewModel}" >
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="21"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/IonBeamMachining;component/Images/file.png" MaxHeight="16" MaxWidth="16" Margin="0, 0, 5, 0"></Image>
+                <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+                <telerik:RadContextMenu.ContextMenu>
+                    <telerik:RadContextMenu Opened="RadContextMenu_Opened">
+                        <telerik:RadMenuItem Header="删除文件" Command="{Binding Delete}"/>
+                        <telerik:RadMenuItem Header="重命名" Click="Rename_Click"/>
+                    </telerik:RadContextMenu>
+                </telerik:RadContextMenu.ContextMenu>
+            </Grid>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate x:Key="ProjectTemplate" DataType="{x:Type vm:ProjectViewModel}" ItemsSource="{Binding Children}" ItemTemplate="{StaticResource FileTemplate}">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="21"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/IonBeamMachining;component/Images/project.png" MaxHeight="16" MaxWidth="16" Margin="0, 0, 5, 0"></Image>
+                <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+                <telerik:RadContextMenu.ContextMenu>
+                    <telerik:RadContextMenu Opened="RadContextMenu_Opened">
+                        <telerik:RadMenuItem Header="新建文件" Command="{Binding DeleteItem}"/>
+                        <telerik:RadMenuItem Header="删除工程" Command="{Binding Delete}"/>
+                        <telerik:RadMenuItem Header="重命名" Click="Rename_Click"/>
+                    </telerik:RadContextMenu>
+                </telerik:RadContextMenu.ContextMenu>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <DataTemplate x:Key="ItemEditTemplate" >
+            <TextBox Text="{Binding Name}" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <telerik:RadTreeView 
+                IsLineEnabled="True"
+                IsDragDropEnabled="False"
+                IsExpandOnDblClickEnabled="False"
+                IsEditable="True"
+                ItemsSource="{Binding Children}"
+                SelectedItem="{Binding Main.SelectedItem, Source={StaticResource Locator}}"
+                ItemTemplate="{StaticResource ProjectTemplate}"
+                ItemEditTemplate="{StaticResource ItemEditTemplate}">
+        </telerik:RadTreeView>
+    </Grid>
+</UserControl>
